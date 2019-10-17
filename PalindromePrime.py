@@ -55,12 +55,17 @@ class Solution:
             if 10 ** len(str(num)) - 1 == num:
                 num = 10 ** len(str(num)) + 1
             elif mid == '':  # Even number
-                if beg[::-1] > end:
-                    end = beg[::-1]
-                else:
-                    beg = str(int(beg) + 1)
-                    end = beg[::-1]
-                num = int(beg + mid + end)
+                # Old Solution
+                #
+                # if beg[::-1] > end:
+                #     end = beg[::-1]
+                # else:
+                #     beg = str(int(beg) + 1)
+                #     end = beg[::-1]
+                # num = int(beg + mid + end)
+                #
+                # Better solution
+                num = 10 ** len(str(num)) + 1
             else:
                 if beg[::-1] > end:
                     end = beg[::-1]
