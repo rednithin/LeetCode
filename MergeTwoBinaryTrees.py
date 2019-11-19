@@ -11,15 +11,9 @@ class Solution:
         if t1 == None and t2 == None:
             return None
         if t1 == None:
-            t = TreeNode(t2.val)
-            t.left = self.mergeTrees(None, t2.left)
-            t.right = self.mergeTrees(None, t2.right)
-            return t
+            return t2
         if t2 == None:
-            t = TreeNode(t1.val)
-            t.left = self.mergeTrees(t1.left, None)
-            t.right = self.mergeTrees(t1.right, None)
-            return t
+            return t1
         t = TreeNode(t1.val + t2.val)
         t.left = self.mergeTrees(t1.left, t2.left)
         t.right = self.mergeTrees(t1.right, t2.right)
