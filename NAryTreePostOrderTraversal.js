@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/n-ary-tree-preorder-traversal/submissions/
+// https://leetcode.com/problems/n-ary-tree-postorder-traversal/
 /**
  * // Definition for a Node.
  * function Node(val, children) {
@@ -10,16 +10,16 @@
  * @param {Node} root
  * @return {number[]}
  */
-var preorder = function(root) {
+var postorder = function(root) {
   if(!root) {
     return [];
   }
   return [
-    root.val,
     ...root
       .children
       .filter(child => child)
-      .map(child => preorder(child))
-      .reduce((acc, curr) => [...acc, ...curr], [])
+      .map(child => postorder(child))
+      .reduce((acc, curr) => [...acc, ...curr], []),
+    root.val,
   ]
 };
