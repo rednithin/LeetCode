@@ -11,10 +11,7 @@
  * @return {number}
  */
 var maxDepth = function(root) {
-  if(!root) {
-    return 0;
-  }
-  return 1 + root
+  return !root ? 0 : 1 + root
     .children
     .map(child => maxDepth(child))
     .reduce((acc, curr) => Math.max(acc, curr), 0);
