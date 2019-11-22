@@ -7,15 +7,15 @@
 
 class Solution:
     def __init__(self):
-      self.d = set()
-      
+        self.d = set()
+        
     def findTarget(self, root: TreeNode, k: int) -> bool:
-      if root == None:
+        if root == None:
         return False
-      
-      if root.val in self.d:
+        
+        if root.val in self.d:
         return True
-      
-      self.d.add(k - root.val)
-      return self.findTarget(root.left, k) or self.findTarget(root.right, k)
+        
+        self.d.add(k - root.val)
+        return self.findTarget(root.left, k) or self.findTarget(root.right, k)
         
