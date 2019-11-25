@@ -10,9 +10,22 @@
  * @return {number}
  */
 var diameterOfBinaryTree = function(root) {
-  return !root.left && !root.right ?
-    1:
-    diameterOfBinaryTree(root.left) +
-    diameterOfBinaryTree(root.right);
-  ;
+  if(!root) {
+    return 0;
+  }
+  let maxDiameter = 0;
+  
+  const inner = root => {
+    if(!root) {
+      return 0;
+    }
+    
+    let left = inner(root.left);
+    let right = inner(root.right);
+    // console.log(root.val, left, right);
+    maxDiameter = Math.max(maxDiameter, left + right);
+    return 1 + Math.max(left, right);
+  }
+  inner(root);
+  return maxDiameter;
 };
