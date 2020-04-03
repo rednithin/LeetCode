@@ -13,6 +13,8 @@
 # 62 + 82 = 100
 # 12 + 02 + 02 = 1
 
+# Try to use Floyds Cycle Detection algorithm from comments.
+
 from functools import reduce
 
 
