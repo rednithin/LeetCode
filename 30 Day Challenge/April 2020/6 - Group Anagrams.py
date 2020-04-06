@@ -16,14 +16,12 @@
 #     All inputs will be in lowercase.
 #     The order of your output does not matter.
 
-from collections import Counter
+from collections import Counter, defaultdict
 
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        d = {}
+        d = defaultdict(list)
         for s in strs:
-            hash = "".join(sorted(s))
-            d.setdefault(hash, [])
-            d[hash].append(s)
+            d["".join(sorted(s))].append(s)
         return d.values()
