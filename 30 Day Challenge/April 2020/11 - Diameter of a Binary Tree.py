@@ -24,16 +24,16 @@
 
 class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
-        maxHeight = 0
+        maxDiameter = 0
 
         def height(root):
-            nonlocal maxHeight
+            nonlocal maxDiameter
             if not root:
                 return 0
             a = height(root.left)
             b = height(root.right)
-            maxHeight = max(maxHeight, a + b)
+            maxDiameter = max(maxDiameter, a + b)
             return 1 + max(a, b)
 
         height(root)
-        return maxHeight
+        return maxDiameter
