@@ -7,7 +7,9 @@ impl Solution {
         while heap.len() > 1 {
             let a = heap.pop().unwrap();
             let b = heap.pop().unwrap();
-            heap.push(a - b);
+            if a != b {
+                heap.push(a - b);
+            }
         }
 
         match heap.pop() {
