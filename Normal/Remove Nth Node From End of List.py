@@ -9,17 +9,15 @@ class Solution:
     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
         stack = []
         first = head
+
         while first:
             stack.append(first)
             first = first.next
 
-        for i in range(n):
-            stack.pop()
-
-        if len(stack) == 0:
+        if stack[-n] == head:
             return head.next
 
-        first = stack[-1]
+        first = stack[-n+1]
         first.next = first.next.next
 
         return head
