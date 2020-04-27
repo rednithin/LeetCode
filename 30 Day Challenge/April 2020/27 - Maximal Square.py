@@ -11,6 +11,8 @@
 
 # Output: 4
 
+from functools import lru_cache
+
 
 class Solution:
     def maximalSquare(self, matrix: List[List[str]]) -> int:
