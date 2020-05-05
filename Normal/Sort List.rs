@@ -1,24 +1,21 @@
 // Definition for singly-linked list.
-// #[derive(PartialEq, Eq, Clone, Debug)]
-// pub struct ListNode {
-//   pub val: i32,
-//   pub next: Option<Box<ListNode>>
-// }
-//
-// impl ListNode {
-//   #[inline]
-//   fn new(val: i32) -> Self {
-//     ListNode {
-//       next: None,
-//       val
-//     }
-//   }
-// }
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
+    }
+}
+
+type Node = Option<Box<ListNode>>;
+
 impl Solution {
-    pub fn merge(
-        first: Option<Box<ListNode>>,
-        second: Option<Box<ListNode>>,
-    ) -> Option<Box<ListNode>> {
+    pub fn merge(first: Node, second: Node) -> Node {
         match (first, second) {
             (None, None) => None,
             (x, None) => x,
@@ -31,9 +28,7 @@ impl Solution {
             }
         }
     }
-    pub fn split_list(
-        mut head: Option<Box<ListNode>>,
-    ) -> (Option<Box<ListNode>>, Option<Box<ListNode>>) {
+    pub fn split_list(mut head: Node) -> (Node, Node) {
         let mut alt = true;
         let mut first = None;
         let mut second = None;
@@ -51,7 +46,7 @@ impl Solution {
         }
         (first, second)
     }
-    pub fn sort_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    pub fn sort_list(head: Node) -> Node {
         let (first, second) = Solution::split_list(head);
 
         match (first, second) {
