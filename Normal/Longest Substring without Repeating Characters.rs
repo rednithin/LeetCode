@@ -44,3 +44,23 @@ impl Solution {
         longest as i32
     }
 }
+
+impl Solution {
+    pub fn length_of_longest_substring(s: String) -> i32 {
+        let mut longest = 0;
+        let mut i = 0;
+        let mut j = 0;
+        let mut set = HashMap::new();
+        let chars: Vec<char> = s.chars().into_iter().collect();
+        while j < chars.len() {
+            if let Some(x) = set.get_mut(&chars[j]) {
+                i = cmp::max(i, *x);
+            }
+            longest = cmp::max(longest, j - i + 1);
+            set.insert(chars[j], j + 1);
+            j += 1;
+            // println!("{} {} {:?}", i, j, set);
+        }
+        longest as i32
+    }
+}
