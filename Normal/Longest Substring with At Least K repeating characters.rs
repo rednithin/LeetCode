@@ -11,19 +11,17 @@ impl Solution {
         for c in s.chars() {
             *map.entry(c).or_insert(0) += 1;
         }
-        if let Some(x) = map
-            .iter()
+        map.iter()
             .filter(|&(_, &freq)| freq < k)
             .map(|(&a, _)| a)
             .max()
-        {
-            s.split(|c| c == x)
-                .map(|new| Solution::recursive(new, k))
-                .max()
-                .unwrap_or(0) as i32
-        } else {
-            s.len() as i32
-        }
+            .map(|x| {
+                s.split(|c| c == x)
+                    .map(|new| Solution::recursive(new, k))
+                    .max()
+                    .unwrap_or(0)
+            })
+            .unwrap_or(s.len() as i32)
     }
     pub fn longest_substring(s: String, k: i32) -> i32 {
         Solution::recursive(&s, k)
