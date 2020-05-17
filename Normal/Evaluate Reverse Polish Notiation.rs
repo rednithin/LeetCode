@@ -7,14 +7,13 @@ impl Solution {
             } else {
                 let b = stack.pop().unwrap();
                 let a = stack.pop().unwrap();
-                let mut answer = 0;
-                match &token[..] {
-                    "+" => answer = a + b,
-                    "*" => answer = a * b,
-                    "/" => answer = a / b,
-                    "-" => answer = a - b,
-                    _ => (),
-                }
+                let answer = match &token[..] {
+                    "+" => a + b,
+                    "*" => a * b,
+                    "/" => a / b,
+                    "-" => a - b,
+                    _ => 0,
+                };
                 stack.push(answer);
             }
         }
